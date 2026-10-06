@@ -1,0 +1,14 @@
+# terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl 
+# ELK
+elasticsearch-*.tar.gz
+kibana-*.tar.gz
+kibana-9.5.4/
+# Logs
+logs/
+*.log
+# Backup
+backup/

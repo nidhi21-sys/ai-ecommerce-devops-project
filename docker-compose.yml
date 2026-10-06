@@ -1,0 +1,9 @@
+services:
+  nexvion:
+    build: .
+    container_name: nexvion
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+
+

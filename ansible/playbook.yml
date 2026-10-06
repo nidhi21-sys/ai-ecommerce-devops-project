@@ -1,0 +1,36 @@
+---
+- name: Configure Nexvion Server
+  hosts: web
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+       update_cache: yes
+    - name: Install required packages
+      apt:
+       name:
+        - git
+        - curl
+        - unzip
+        - docker.io
+       state: present
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Create Nexvion application directory
+      file:
+        path: /opt/nexvion
+        state: directory
+        mode: '0755'
+    - name: Check server uptime
+      command: uptime
+      register: uptime_result
+    - name: Display server uptime
+      debug:
+        var: uptime_result.stdout
+
+
+

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: nexvion
+   namespace: nexvion
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+       app: nexvion
+  strategy:
+     type: RollingUpdate
+     rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: nexvion
+    spec:
+     containers:
+       - name: nexvion
+         image: nidhi460/nexvion:build-1
+         imagePullPolicy: IfNotPresent
+         ports:
+          - containerPort: 80
+         envFrom:
+           - configMapRef:
+                name: nexvion-config
+           - secretRef:
+               name: nexvion-secret
+         resources:
+            requests:
+               cpu: "100m"
+               memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+
+
+
+
+
+
+
+

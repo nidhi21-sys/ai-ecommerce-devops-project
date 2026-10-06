@@ -1,0 +1,6 @@
+apiVersion: v2
+name: nexvion
+description: Helm chart for Nexvion application
+type: application
+version: 1.0.0
+apiVersion: "1.0"

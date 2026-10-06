@@ -1,0 +1,12 @@
+replicaCount: 4
+
+image:
+  repository: nidhi460/nexvion
+  tag: latest
+  pullPolicy: IfNotPresent
+service:
+  type: NodePort
+  port: 80
+  targetPort: 80
+containerPort: 80
+name: nexvion
